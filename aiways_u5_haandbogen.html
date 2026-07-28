@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aiways U5 — Håndbog til handskerummet</title>
+<style>
+  :root{
+    --ink:#15181b;
+    --soft:#33383d;
+    --muted:#6a7075;
+    --rule:#c6c9cb;
+    --hair:#e0e2e3;
+    --accent:#1b4a44;
+    --warn:#8b2f26;
+    --tint:#f4f3f0;
+    --serif:"Constantia","Palatino Linotype","Book Antiqua",Palatino,"Iowan Old Style",Georgia,serif;
+    --sans:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:#e7e5e1; color:var(--ink);
+    font-family:var(--serif); font-size:10.5pt; line-height:1.55;
+    font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1,"kern" 1;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .sheet{max-width:186mm; margin:8mm auto 14mm; padding:20mm 18mm 16mm; background:#fff; border:1px solid #d5d2cd}
+  p{margin:0 0 3.5mm; orphans:3; widows:3}
+  strong{font-weight:700}
+  h1,h2{font-family:var(--sans); font-weight:600; margin:0}
+  a{color:inherit; text-decoration:none}
+
+  /* ── forside ────────────────────────────── */
+  h1{font-size:23pt; line-height:1.05; letter-spacing:.03em; text-transform:uppercase; margin:0 0 5mm}
+  .rule-heavy{border:0; border-top:1.6pt solid var(--accent); margin:7mm 0}
+
+  /* ── indholdsfortegnelse ────────────────── */
+  .label{font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 4mm}
+  .toc ol{list-style:none; margin:0; padding:0}
+  .toc li{display:flex; align-items:baseline; margin:0; padding:1.8mm 0; break-inside:avoid; font-size:10.5pt}
+  .toc li::before{content:none}
+  .toc .dots{flex:1 1 auto; min-width:8mm; margin:0 3mm 1.2mm; border-bottom:.5pt dotted var(--rule)}
+  .toc .p{font-family:var(--sans); font-size:8.5pt; font-weight:700; letter-spacing:.06em; color:var(--accent);
+          font-variant-numeric:lining-nums tabular-nums; white-space:nowrap}
+
+  /* ── sider og emner ─────────────────────── */
+  .s{break-before:page; position:relative; padding-bottom:11mm}
+  .s-page{position:absolute; bottom:0; left:0; right:0; margin:0; text-align:center;
+          font-family:var(--sans); font-size:8.5pt; font-weight:600; letter-spacing:.14em;
+          color:var(--muted); font-variant-numeric:lining-nums tabular-nums}
+  .t + .t{margin-top:6mm; padding-top:6mm; border-top:.75pt solid var(--rule)}
+  h2{font-size:15pt; line-height:1.22; letter-spacing:-.005em; margin:0 0 3.5mm}
+  .s-lead{color:var(--soft)}
+  ul{list-style:none; margin:0 0 4mm; padding:0}
+  li{position:relative; padding-left:5.5mm; margin:0 0 2.2mm; break-inside:avoid}
+  li::before{content:"–"; position:absolute; left:0; top:0; color:var(--accent); font-family:var(--sans)}
+  .tag{display:inline-block; font-family:var(--sans); font-size:7pt; font-weight:700; letter-spacing:.14em;
+       text-transform:uppercase; border:.75pt solid var(--rule); padding:1px 5px 0; margin-left:2mm;
+       vertical-align:3px; color:var(--muted); white-space:nowrap}
+  .tag.crit{color:var(--warn); border-color:var(--warn)}
+  .tag.good{color:var(--accent); border-color:var(--accent)}
+  .path{font-family:var(--sans); font-size:8.8pt; letter-spacing:.02em; color:var(--soft)}
+  .quote{margin:4mm 0 0; padding-left:5mm; border-left:1.2pt solid var(--accent); font-style:italic; color:var(--soft)}
+  .quote span{display:block; font-family:var(--sans); font-style:normal; font-size:7.5pt; font-weight:700;
+              letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:2mm}
+  .sub{font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+       color:var(--muted); margin:5mm 0 2.5mm}
+
+  /* ── tabeller ───────────────────────────── */
+  table{width:100%; border-collapse:collapse; margin:0 0 4.5mm; font-size:9.8pt}
+  th,td{text-align:left; padding:1.9mm 0; border-bottom:.5pt solid var(--hair); vertical-align:top}
+  thead th{font-family:var(--sans); font-size:7.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); border-bottom:.75pt solid var(--rule)}
+  td:last-child,th:last-child{text-align:right; white-space:nowrap; font-variant-numeric:lining-nums tabular-nums}
+
+  /* ── skærm ──────────────────────────────── */
+  .hint{max-width:186mm; margin:8mm auto -6mm; padding:4mm 6mm; background:#fff; border:1px solid #d5d2cd;
+        font-family:var(--sans); font-size:9pt; line-height:1.5; color:var(--muted)}
+  .hint b{color:var(--ink)}
+  @media screen{ .s{margin-top:16mm} }
+
+  @page{size:A4 portrait; margin:16mm 17mm 14mm}
+  @media print{
+    body{background:#fff; font-size:10pt}
+    .sheet{max-width:none; margin:0; padding:0; border:0}
+    .no-print{display:none !important}
+    .quote,table{break-inside:avoid}
+    h1,h2,.sub{break-after:avoid}
+    .s{min-height:264mm}
+  }
+</style>
+</head>
+<body>
+
+<aside class="hint no-print">
+  <b>Print:</b> A4, dobbeltsidet (vend på lange side). Slå browserens sidehoved og sidefod fra, og sæt marginer til «standard». Sidetallet står nederst på hver side, så indholdsfortegnelsen passer uanset printer. Vil du have et A5-hæfte til handskerummet: vælg <b>2 sider pr. ark</b>, liggende, og fold arkene på midten.
+</aside>
+
+<div class="sheet">
+
+<header>
+  <h1>Håndbog til handskerummet</h1>
+</header>
+
+<hr class="rule-heavy">
+
+<nav class="toc">
+  <p class="label">Indhold</p>
+  <ol>
+    <li><span>12V-batteriet — bilen er stendød</span><span class="dots"></span><a class="p" href="#t-12v">Side 1</a></li>
+    <li><span>Lynladeren giver kun 7–8 kW (E-locken)</span><span class="dots"></span><a class="p" href="#t-elock">Side 2</a></li>
+    <li><span>Ladestikket sidder fast i bilen</span><span class="dots"></span><a class="p" href="#t-stik">Side 2</a></li>
+    <li><span>Sådan lader du hurtigst</span><span class="dots"></span><a class="p" href="#t-lade">Side 3</a></li>
+    <li><span>Bip, stemmer og SOS-lampen</span><span class="dots"></span><a class="p" href="#t-bip">Side 3</a></li>
+    <li><span>Varme i kabinen om vinteren</span><span class="dots"></span><a class="p" href="#t-varme">Side 4</a></li>
+    <li><span>Livet uden app'en: forvarmning og batteriprocent</span><span class="dots"></span><a class="p" href="#t-app">Side 4</a></li>
+    <li><span>Rækkevidde i praksis</span><span class="dots"></span><a class="p" href="#t-raekke">Side 5</a></li>
+    <li><span>CarPlay og Android Auto</span><span class="dots"></span><a class="p" href="#t-carplay">Side 6</a></li>
+    <li><span>Dørhåndtag der ikke går ind</span><span class="dots"></span><a class="p" href="#t-haandtag">Side 6</a></li>
+    <li><span>De skjulte funktioner</span><span class="dots"></span><a class="p" href="#t-skjult">Side 7</a></li>
+    <li><span>Dæk, fælge og TPMS</span><span class="dots"></span><a class="p" href="#t-daek">Side 8</a></li>
+    <li><span>Reservedele og værksteder</span><span class="dots"></span><a class="p" href="#t-dele">Side 9</a></li>
+    <li><span>Servicen der holder garantien i live</span><span class="dots"></span><a class="p" href="#t-service">Side 10</a></li>
+    <li><span>Klonk og knirk over bump</span><span class="dots"></span><a class="p" href="#t-klonk">Side 10</a></li>
+    <li><span>Småting du bør kende</span><span class="dots"></span><a class="p" href="#t-smaa">Side 11</a></li>
+    <li><span>Uret viser forkert — kl. 08:30-tricket</span><span class="dots"></span><a class="p" href="#t-uret">Side 11</a></li>
+  </ol>
+</nav>
+
+<!-- SIDE 1 -->
+<section class="s">
+  <p class="s-page">1 / 11</p>
+
+  <article class="t" id="t-12v">
+  <h2>12V-batteriet er bilens akilleshæl<span class="tag crit">Kritisk</span></h2>
+  <p class="s-lead">Det klart mest omtalte emne i hele gruppen. Det originale 12V-batteri er af dårlig kvalitet og kan klappe sammen <em>uden varsel</em>. Når det gør det, er bilen ikke «lidt træg» — den er stendød: du kan ikke låse op, ikke få den i gear, og displayet melder alverdens fejl (airbag, ACC, traction power limit, SOS-blink).</p>
+  <ul>
+    <li><strong>Køb en jumpstarter i dag</strong> og læg den i bilen. 500–800 kr hos T.Hansen, FDM eller Temu. Husk at lade den op et par gange om året — ellers virker den ikke den dag du skal bruge den.</li>
+    <li><strong>Skift batteriet forebyggende hvert 2.–3. år</strong>, også hvis værkstedet siger «det måler fint». Utallige har fået at vide at det var i orden, og så døde det ugen efter. Et AGM-batteri fra T.Hansen eller Biltema koster 600–800 kr.</li>
+    <li><strong>Du kan skifte det selv på 10 minutter.</strong> Det sidder under motorhjelmen i førersiden. Tag plastikskjoldene af (forsigtigt), løsn skruen i bunden der holder beslaget, skift, spænd, sæt plastik på. Ingen kodning nødvendig. Gør det kl. 08:30, så passer uret bagefter — se side 11.</li>
+    <li><strong>Nøglen skal ligge mindst 5–8 meter fra bilen</strong> når den holder hjemme. Ellers står bilen og «søger» efter nøglen hele natten og tapper batteriet. Flere har løst tilbagevendende problemer alene ved at flytte nøgleskålen til et andet rum. En Faraday-pose virker også.</li>
+    <li><strong>Tryk «Power off» på skærmen</strong> (<span class="path">Vehicle control › Power off</span>) når du forlader bilen — især hvis den skal stå ulåst, eller hvis du står og pakker eller støvsuger med døre og bagklap åbne. Det er den klassiske måde at dræne batteriet på.</li>
+    <li><strong>Pakke-tricket:</strong> Falck-mandens råd, som flere har bekræftet — når du står og pakker længe: kør bilen 2–3 meter frem og tilbage, sæt lille&nbsp;P, og lad nøglen ligge i bilen. Så lader bilen 12V fra det store batteri, mens du pakker.</li>
+    <li><strong>Sig det til vejhjælpen:</strong> de må <em>ikke</em> tage polerne af og sætte dem sammen for at «aflade spændingen». Én i gruppen fik 58 fejlkoder i boksen ved elmotoren af det — en reparation på omkring 40.000 kr.</li>
+    <li><strong>Efter et boost: kør mindst 30 minutter</strong>, så batteriet får ladet op. Der er 2 års reklamationsret på batteriet, og mange får det skiftet på garanti — nogle skal dog selv betale arbejdslønnen.</li>
+  </ul>
+  <p class="quote">Kør aldrig hjemmefra uden jumpstarter.<span>Tilbagevendende råd i gruppen</span></p>
+  </article>
+</section>
+
+<!-- SIDE 2 -->
+<section class="s">
+  <p class="s-page">2 / 11</p>
+
+  <article class="t" id="t-elock">
+  <h2>Lader den kun 7–8 kW på en lynlader? Så er det E-locken<span class="tag crit">Kritisk</span></h2>
+  <p class="s-lead">Det næstmest omtalte problem — og det som får flest til at tro at bilen er langsom, når den faktisk er defekt. Låsemotoren i ladeporten er svag. Når den ikke får låst ladepistolen ordentligt fast, sætter bilen af sikkerhedshensyn ladningen ned til 5–10 kW, uanset om standeren kan levere 300 kW.</p>
+  <ul>
+    <li><strong>Testen:</strong> sæt til ladning, og prøv at trække stikket ud. Kan du det, er det ikke låst — og så er E-locken problemet.</li>
+    <li><strong>Kvikfix på stedet:</strong> hold op i ladepistolen, mens ladningen starter. Eller stop og start ladningen igen, gerne flere gange. Eller skift stander.</li>
+    <li><strong>Manuelt fix:</strong> åbn motorhjelmen, fjern det lille plastikskjold i førersiden, ræk hånden ind bag ladestikket og forlygten — der sidder en lille rund drejeknap med en hvid streg. Drej den så stregerne står ud for hinanden (låst). Flere i gruppen sætter en tuschstreg som markering.</li>
+    <li><strong>Via skærmen</strong> (3-fasede og nyere software): <span class="path">Vehicle control › Charge › Charging gun lock/unlock</span>.</li>
+    <li>Smør låsepalen med silikonespray — det er nok for nogle. Ellers <strong>skiftes E-locken på garanti</strong>. Ventetid: fra få dage til 1½ måned.</li>
+    <li>Klagerne kommer oftest ved Clevers lynladere, hvor kablerne er vandkølede og derfor tunge og hænger i porten.</li>
+  </ul>
+  </article>
+
+  <article class="t" id="t-stik">
+  <h2>Sådan får du ladestikket ud — uden at gå i panik</h2>
+  <p class="s-lead">Et af de allerhyppigste «hjælp!»-opslag. Der er flere veje, og de virker forskelligt fra bil til bil:</p>
+  <ul>
+    <li><strong>Nøgletricket:</strong> hold <em>lås</em> + <em>åbn bagklap</em> inde samtidigt i ca. 3 sekunder, og tryk derefter på <em>lås op</em>. Alle døre og bagklap SKAL være helt lukkede, ellers virker det ikke. Anvisningen står på klistermærket indvendigt i ladelågen.</li>
+    <li><strong>Stop ladningen først</strong> i din lade-app eller med brikken. Så slipper den næsten altid uden bøvl. Det er den nemmeste rutine i hverdagen.</li>
+    <li><strong>Via skærmen:</strong> <span class="path">Charge › Unlock charging gun</span> — mest på 3-fasede og nyere software.</li>
+    <li><strong>Nødløsningen:</strong> den manuelle udløser under motorhjelmen bag ladestikket — samme drejeknap som beskrevet ovenfor under E-locken. Øv dig på at finde den <em>i dagslys hjemme i indkørslen</em> — ikke første gang på en fuld ladeplads i regnvejr.</li>
+    <li>Frostvejr? Lågen kan fryse fast. Varm den med en hårtørrer eller isfjerner, og smør gummilister og mekanik med silikone inden vinteren.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 3 -->
+<section class="s">
+  <p class="s-page">3 / 11</p>
+
+  <article class="t" id="t-lade">
+  <h2>Sådan lader du hurtigst — ladekurven er bilens svageste punkt</h2>
+  <p class="s-lead">Max er 90–93 kW, og bilen kan <strong>ikke prækonditionere batteriet</strong>. Der er intet du kan trykke på for at varme batteriet op — det sker kun ved at køre.</p>
+  <ul>
+    <li><strong>Lad efter en længere tur</strong>, helst motorvej. Koldt batteri = 25–50 kW. Varmt batteri og lav ladestand = 75–93 kW.</li>
+    <li><strong>Lad fra 10–20 % og kun op til 60–80 %.</strong> Over 80 % falder den til 20–30 kW, og de sidste 20 % tager evigheder. Flere korte stop slår ét langt.</li>
+    <li>Typiske tider: <strong>20–80 % på 35 min</strong> i godt vejr, <strong>45–60+ min</strong> om vinteren. 10–100 % kan tage 1 time og 40 minutter.</li>
+    <li><strong>Vælg en stander der kan mere end 90 kW.</strong> En 50 kW-stander gør en reel forskel i tid. Ionity roses flere gange for at holde stabile ~90 kW. Ved OK's 75 kW-standere: vælg <em>udtag 2</em> — det får 50 kW mod udtag 1's 25 kW, når der er to biler på.</li>
+    <li>Lader den langsomt uden grund → <strong>tjek E-locken</strong> (side 2). Det er langt den hyppigste årsag.</li>
+    <li><strong>Ladegrænse på 80 %</strong> kan ikke sættes i bilen. Gør det i lade-app'en (Clever intelligent opladning, Monta, Norlys, Greenbow) — eller regn kWh ud: <span class="path">(80 − nuværende %) × 0,6</span>.</li>
+    <li>Aiways siger selv at batteriet gerne må lades til 100 %. Gruppen er delt; konsensus er at det er fint hvis du kører dagen efter, men lad den ikke <em>stå</em> fuldt opladet i dagevis.</li>
+  </ul>
+  </article>
+
+  <article class="t" id="t-bip">
+  <h2>Sluk for stemmen i loftet og den hysteriske bippen</h2>
+  <p class="s-lead">Bilen taler til dig — «don't smoke», «please take a rest», «keep looking ahead» — og bipper voldsomt når noget nærmer sig. Sådan slipper du:</p>
+  <ul>
+    <li><strong>Stemmen og advarslerne:</strong> <span class="path">Settings › Safety &amp; Comfort › Safety hint</span> — slå det hele fra. Det er permanent.</li>
+    <li><strong>Parkeringsbippen:</strong> <strong>træk op i den lille P-knap</strong> (håndbremsen), så stopper bippen — perfekt ved drive-in eller i kø. Den slipper igen når du træder på speederen. Der findes også <span class="path">Radar and Muting</span> i menuen, men den skal slås fra ved hver kørsel.</li>
+    <li><strong>Bipper den vildt i tide og utide?</strong> Så mangler du sandsynligvis opdateringer. Én i gruppen manglede fem — efter dem bipper bilen kun få gange og holder så op.</li>
+    <li><strong>Dyt ved låsning:</strong> hold <em>lås</em> + <em>lås op</em> inde i nogle sekunder på nøglen for at slå det til eller fra. Dobbeltdyt betyder at en dør eller bagklap ikke er lukket helt — det kan ikke slås fra.</li>
+    <li><strong>Blinklydens volumen kan ikke ændres.</strong> Ej heller den ydre lavfarts-lyd.</li>
+    <li><strong>Vejbaneassistenten (iDrive)</strong> bipper 3 gange ved hver overhaling. Brug ACC alene i stedet: tryk 1 gang = fartpilot med assistent, 2 gange = adaptiv uden.</li>
+    <li><strong>SOS-lampen blinker rødt?</strong> Det betyder blot at bilen ikke har netforbindelse — og det har den ikke mere. Det går over af sig selv. <strong>Rør den ikke:</strong> holder du knappen inde i 5 sekunder, ringer den til 112, og du kan ikke lægge på. Rigtig mange i gruppen har prøvet det.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 4 -->
+<section class="s">
+  <p class="s-page">4 / 11</p>
+
+  <article class="t" id="t-varme">
+  <h2>Sådan får du faktisk varme i kabinen om vinteren</h2>
+  <p class="s-lead">U5'eren har <strong>ingen varmepumpe</strong> — den har aldrig eksisteret på modellen. Varmen kommer fra et vandbårent element, en slags dyppekoger, og den er langsom. Kombineret med at der siver kold udeluft ind gennem ventilationen selv med blæseren slukket, giver det den mest genkendelige vinterklage i gruppen. Det der virker:</p>
+  <ul>
+    <li><strong>Kør i NORMAL, ikke ECO.</strong> Gentaget råd fra både ejere og værksteder.</li>
+    <li><strong>Sluk A/C</strong>, sæt 25–28 °C, blæser på trin <strong>5–6</strong>, og send luften på ruden og fødder. Slå <strong>recirkulation</strong> til, og slå den fra igen når ruderne begynder at dugge.</li>
+    <li><strong>Varm kun én kanal ad gangen</strong> først, direkte ind i kabinen, og skift derefter til fødder når der er varme.</li>
+    <li><strong>Tænd sædevarmen.</strong> Den gør mere for følelsen end blæseren i de første minutter.</li>
+    <li><strong>Skift pollenfilter.</strong> Flere har fået både bedre varme <em>og</em> fjernet muglugten ved at skifte det (168 kr på Amazon eller AliExpress, sidder bag panelet i passagersiden — 2 skruer). Tjek samtidig at dækslet foran filteret sidder korrekt; en knækket clips gav vedvarende fugtproblemer for en i gruppen.</li>
+    <li><strong>Få A/C-anlægget efterfyldt.</strong> Mangler der væske — flere har manglet 70–450 gram, nogle allerede fra fabrikken — går det ud over både varme, affugtning, rækkevidde og DC-ladehastighed. Brug et værksted der kan skaffe den rigtige væske.</li>
+    <li>Varmelegemet <strong>er blevet skiftet på garanti</strong> for flere, med markant effekt. Klag hvis det er hjælpeløst.</li>
+    <li><strong>Dug:</strong> puds ruderne indvendigt med husholdningssprit, brug antidug-behandling, og luft ud inden du parkerer. Dug sætter sig meget lettere på snavsede ruder.</li>
+  </ul>
+  </article>
+
+  <article class="t" id="t-app">
+  <h2>Livet uden app'en: forvarmning og batteriprocent</h2>
+  <p class="s-lead">Aiways-app'en har været nede siden foråret 2025 og er fjernet fra App Store. Officiel forklaring: flytning af IT-infrastrukturen fra Kina til München. Deadline er udskudt igen og igen. Aiways kalder den selv «en gratis service», og hverken forhandlere eller Aiways Danmark har indflydelse — ansvaret ligger hos Aiways Europe (<span class="path">contact@ai-ways.eu</span>). Der står permanent «no service» i skærmens hjørne. Sådan lever du med det:</p>
+  <ul>
+    <li><strong>Forvarm alligevel:</strong> lås op, træd på bremsen, sæt gearet i <strong>N</strong>, og træk <strong>lille P</strong> (håndbremsen) — så kan du stige ud <em>med nøglen</em>, lukke døren, og bilen bliver ved med at varme. Alternativt: lad nøglen ligge i kopholderen, eller lad førerdøren stå på klem. Bemærk at du ikke kan låse bilen imens.</li>
+    <li><strong>Varm op mens den lader</strong> — så koster det ikke rækkevidde.</li>
+    <li><strong>Se batteriprocent via en OBD2-dongle</strong> plus <em>A Better Route Planner</em> (ABRP) eller <em>Car Scanner Pro</em>. Bilen skal være låst op, så CAN-bussen er vågen. Flere i gruppen bruger det til ruteplanlægning og til at læse fejlkoder.</li>
+    <li>Der er entusiaster i gruppen som undersøger <em>Open Vehicle Monitoring System</em> (OVMS) plus Home Assistant som DIY-erstatning. Intet færdigt endnu.</li>
+    <li><strong>Uret</strong> skal stilles manuelt — se side 11.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 5 -->
+<section class="s">
+  <p class="s-page">5 / 11</p>
+
+  <article class="t" id="t-raekke">
+  <h2>Rækkevidde: glem de 400 km — og hvad der reelt flytter noget</h2>
+  <p class="s-lead">De 400 km er WLTP. Batteriet er 63 kWh, og bilen viser altid ca. 400 km ved 100 % uanset vejr og kørestil. De rigtige tal, lagt sammen fra mange rapporter i gruppen:</p>
+  <table>
+    <thead><tr><th>Forhold</th><th>Rækkevidde</th></tr></thead>
+    <tbody>
+      <tr><td>Sommer, landevej og blandet</td><td>300–370 km</td></tr>
+      <tr><td>Sommer, motorvej 110–120</td><td>240–280 km</td></tr>
+      <tr><td>Vinter, blandet</td><td>200–280 km</td></tr>
+      <tr><td>Vinter, motorvej (130 og frost: ned mod 150)</td><td>150–200 km</td></tr>
+      <tr><td>Med 1.500 kg på krogen</td><td>150–200 km</td></tr>
+    </tbody>
+  </table>
+  <p>Forbrug: ca. 17–20 kWh/100 km om sommeren, 22–30 og op til 35 om vinteren ved mange korte ture. Tagboks koster 20–30 % ekstra.</p>
+  <p class="sub">Det der giver mest tilbage</p>
+  <ul>
+    <li><strong>Farten.</strong> 95–110 km/t frem for 130 er langt den største faktor.</li>
+    <li><strong>Varmen.</strong> Varm kabinen op og sluk derefter — flere sparer 5–8 kWh/100 km på det alene. Varm op mens bilen lader, så koster det ingen rækkevidde.</li>
+    <li><strong>Få tjekket om bremserne hænger.</strong> Ét medlem fik justeret bremsekalibre og målte ~35 % længere rækkevidde bagefter. Bilen er kendt for at have brug for det.</li>
+    <li><strong>Dæktryk.</strong> Anbefalet 2,4–2,6 bar; nogle kører 2,8. For lavt tryk koster mærkbart.</li>
+    <li><strong>Ordentlige dæk</strong> — op til 15 %. Se side 8.</li>
+    <li><strong>A/C-væske</strong> — se side 4.</li>
+    <li><strong>Kalibrering:</strong> lad batteriet komme ned omkring 10 % og lad så helt til 100 % en gang i mellem — flere melder at måleren bliver mere retvisende. En har også fået fjernet en BMS-kommunikationsfejl med en OBD-scanner og oplevede bedre rækkevidde efter.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 6 -->
+<section class="s">
+  <p class="s-page">6 / 11</p>
+
+  <article class="t" id="t-carplay">
+  <h2>CarPlay og Android Auto: vent 30–60 sekunder, hver gang</h2>
+  <p class="s-lead">Bilen har <strong>ingen indbygget navigation</strong>, og infotainmentsystemet er en langsom Android-tablet. Den vigtigste enkeltoplysning i hele gruppen om emnet:</p>
+  <ul>
+    <li><strong>Start bilen, vent 30–60 sekunder, og tilslut FØRST derefter telefonen.</strong> Gør du det for tidligt, kommer CarPlay slet ikke frem. Utallige «det virker ikke!»-tråde ender her.</li>
+    <li><strong>Kablet skal kunne overføre data</strong> — ikke bare lade. Brug telefonens originale kabel eller et kvalitetskabel (Anker nævnes). Billige ladekabler virker ikke. Telefonen skal desuden være låst op ved første tilslutning.</li>
+    <li><strong>Trådløs dongle:</strong> vælg en hvor du kan sætte <strong>30–45 sekunders forsinket opstart</strong> i donglens egne indstillinger. Så kobler den selv på hver gang.</li>
+    <li><strong>Dongles der roses:</strong> Carlinkit T-Box Ultra 2 (dyr, men «bare virker»), Ottocast U2-X Pro og Picasou 2 Pro (udgået, købes brugt), Sinox fra T.Hansen eller Harald Nyborg (~250–400 kr), AAWireless, samt billige fra MyTrendyPhone (~249 kr) og Temu (~93 kr). <strong>Frarådes:</strong> Ottocast AiBox og Play2Video Pro — flere melder om crash, hak og lyd ude af sync.</li>
+    <li><strong>Ekko i telefonsamtaler?</strong> Kendt problem, især med kabel. Trådløst hjælper for de fleste; ellers en indstilling i iPhonen eller brug AirPods.</li>
+    <li><strong>Radioen starter ikke selv</strong> — du skal trykke play. Og den stopper når CarPlay eller GPS tager lyden. Det er normalt.</li>
+    <li>Har du en gammel model med en DAB-hub bag klimapanelet, kan det gøre CarPlay hurtigere at fjerne den. DAB virker i øvrigt slet ikke i mange biler — hubben mangler simpelthen.</li>
+    <li>Uden dongle kan du bare parre telefonen via Bluetooth og bruge stemmestyret navigation og musik — flere er helt tilfredse med det.</li>
+  </ul>
+  </article>
+
+  <article class="t" id="t-haandtag">
+  <h2>Dørhåndtag der ikke går ind — kendt fejl, garanti</h2>
+  <p class="s-lead">Den lille elmotor i det fremkørende håndtag brænder af, og håndtaget bliver stående ude. Nogle har fået skiftet alle fire. Det er en anerkendt garantisag.</p>
+  <ul>
+    <li><strong>Ventetiden svinger vildt:</strong> fra 1 uge (Elmer Amager, Finn Allan Eriksen — Nicolai fik ét lavet på 1 time) til 1–6 måneder. Ring rundt, se side 9.</li>
+    <li><strong>Selv-fix:</strong> motorerne kan købes på AliExpress for ca. 120–200 kr pr. stk. Dørpanelet holdes af 5 skruer (2 i bunden, 2 ved håndtaget bag listen med blå LED, 1 under en prop) og derefter clips — flere i gruppen har gjort det selv.</li>
+    <li><strong>Om vinteren:</strong> hvis et håndtag fryser fast, vip det ud manuelt <em>inden</em> du låser op, så ødelægger du ikke motoren.</li>
+    <li>Du kan sætte bilen til <strong>kun at låse førerdøren op</strong> — så belastes de andre håndtag mindre.</li>
+    <li>Bilen låser i øvrigt ikke selv, og de udstukne håndtag skilter med at den er ulåst. Du <em>kan</em> låse ved at trykke let i fordybningen på håndtaget, når du står tæt på med nøglen — et af de bedst modtagne tips i hele gruppen.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 7 -->
+<section class="s">
+  <p class="s-page">7 / 11</p>
+
+  <article class="t" id="t-skjult">
+  <h2>De skjulte funktioner, ingen fortæller dig om<span class="tag good">Guldkorn</span></h2>
+  <ul>
+    <li><strong>Venstre display:</strong> hold den <em>venstre</em> rulleknap på rattet inde til teksten bliver blå — nu kan du scrolle mellem dæktryk pr. hjul, forbrug, 12V-spænding, triptæller «siden reset» og effektgraf. Højre display kan kun vise radio og musik.</li>
+    <li><strong>Reset af skærme:</strong> hold <em>begge</em> rulleknapper inde i 5–10 sekunder. Fikser frosne skærme, radio der ikke finder kanaler, og døde displays under kørsel. Sætter uret til 08:30.</li>
+    <li><strong>Helt fladt bagagerum:</strong> løft <em>siddepuden</em> op forfra og vip den frem mod forsæderne (du skal hive godt til), læg derefter ryglænet ned. Hattehylden tages af ved at klemme siderne ind, og kan ligge under bunddækket. <strong>Pas på seleholderne</strong> — de knækker hvis de kommer i klemme, og en ny koster ~2.200 kr med 7–10 måneders ventetid.</li>
+    <li><strong>Bagklap:</strong> hold bagklap-knappen på nøglen inde for at åbne <em>og</em> lukke, uden at låse bilen op. Fodsensoren sidder midt under kofangeren, lige til venstre for trækket: vip foden ind og træk hurtigt tilbage — bilen skal være <strong>slukket og ulåst</strong>, og du må ikke stå for tæt bagefter. Åbner den ikke højt nok? Skub den manuelt helt op og hold luk-knappen inde til den bipper — så husker den positionen.</li>
+    <li><strong>Lås og lås op på håndtaget:</strong> tryk let i fordybningen på dørhåndtaget, når du står tæt på med nøglen i lommen. Bilen låser ikke selv, så det er værd at lære.</li>
+    <li><strong>Fartpilot:</strong> <em>hold</em> + eller – inde for at ændre i 1 km/t i stedet for 5. <strong>Dobbeltklik på SET</strong> = køassistent, der selv følger med op til 30 km/t.</li>
+    <li><strong>Regenerering:</strong> <span class="path">Vehicle control › Safety and comfort › Energy recovery level</span>. Sæt den på <strong>LOW i sne og på is</strong> — så motorbremser den ikke og skøjter mindre. Delte meninger, men flere sværger til det.</li>
+    <li><strong>Slå automatisk spejlindklapning fra</strong> (godt i frost): <span class="path">Vehicle control › Doors and windows › Rear-view mirrors are automatically folded</span>.</li>
+    <li><strong>Slå fodsensoren fra før vaskehal</strong> — samme menu, nederst. Klap spejlene ind, slå viskerne fra, sæt i P, tryk Power off og lås. Ellers kan bilen dytte og stoppe vaskerobotten.</li>
+    <li><strong>Trådløs telefonopladning</strong> skal slås til under <span class="path">Charge</span> i menuen. Læg telefonen midt i rummet under klimapanelet, gerne uden cover.</li>
+    <li><strong>Viskerservice-position:</strong> tryk Power off først, derefter findes wiper service mode i menuen.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 8 -->
+<section class="s">
+  <p class="s-page">8 / 11</p>
+
+  <article class="t" id="t-daek">
+  <h2>Dæk, fælge og TPMS</h2>
+  <p class="s-lead">De originale helårsdæk får hårde ord i gruppen — «burde være ulovlige», «direkte livsfarlige». Bilen er forhjulstrukket med blød undervogn og laver hjulspin let, så dækkene betyder usædvanligt meget her.</p>
+  <ul>
+    <li><strong>Størrelser:</strong> 235/50 R19 (standard), 235/55 R19, 215/65 R17 eller 225/65 R17 til vinter. <strong>Fælge:</strong> 5×112, centerhul 57,1 mm, ET ca. 39–45. Fælge fra VW (Tiguan, Touran), Skoda, Seat og Audi passer — eventuelt med centerringe. 20" er <em>ikke</em> med i typegodkendelsen; der er uenighed i gruppen om konsekvensen, så spørg synshallen.</li>
+    <li><strong>Anbefalinger fra ejerne:</strong> Michelin CrossClimate 2 (oftest nævnt, helårs), Goodyear Vector 4Seasons Gen3, Continental WinterContact og VikingContact 7, AllSeasonContact 2. Frarådes: Imperial (rystelser).</li>
+    <li><strong>Priser:</strong> 3.000–7.800 kr for fire dæk, montering 200–500 kr pr. dæk. Køb online og få dem monteret lokalt — det er dét de fleste gør. Aiways-forhandlernes vinterhjul koster typisk 10.000–16.000 kr.</li>
+    <li><strong>Dæktryk 2,4–2,6 bar</strong> (fuldt lastet 2,6). Nogle kører 2,8–2,9 for bedre rækkevidde. Bemærk: displayet kan vise højere tryk end der faktisk er — tjek med måler.</li>
+    <li><strong>TPMS efter dækskift:</strong> den finder selv sensorerne, men det tager 10–50 km, nogle gange et par dage. 8-taller på en p-plads eller en tur over 25 km/t i en halv time hjælper. Sover sensorerne, kan man pumpe til 3 bar, køre lidt, og slippe ned igen.</li>
+    <li><strong>Vinterdæk-reglerne (fra 1. juli 2025):</strong> M+S er godkendt til almindeligt vinterføre; <strong>3PMSF (snefnug i bjerg)</strong> anbefales — og kræves reelt i hårdt vinterføre. Politiet kan give bøde på ~1.000 kr pr. dæk, hvis dækkene ikke passer til forholdene. Kilde: Færdselsstyrelsen. Køb 3PMSF, så er du fri.</li>
+    <li>I sne får bilen ellers <strong>gode ord</strong> med ordentlige dæk: «stabil som et tog på skinner», «pløjede bare igennem».</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 9 -->
+<section class="s">
+  <p class="s-page">9 / 11</p>
+
+  <article class="t" id="t-dele">
+  <h2>Reservedele: svaret afhænger 100 % af hvem du spørger<span class="tag crit">Vigtigt</span></h2>
+  <p class="s-lead">Det mest polariserede emne i gruppen. Nogle venter 6–11 måneder på en kofanger, en seleholder eller en forrude. Andre får håndtag, støddæmpere, sidespejle og bremseskiver hjem på 1–3 uger. <strong>Forskellen er værkstedet.</strong> Så ring rundt før du accepterer et «det kan ikke skaffes».</p>
+  <ul>
+    <li><strong>Værksteder der roses gentagne gange:</strong> Bilforum Herning (Snejbjerg), Finn Allan Eriksen (Aarhus/Tilst), Bilhuset Elmer (Amager), Gunner Due (Køge), Bakke Auto (Esbjerg), Dreyer (Søborg), Kronsbjerg (Odense), Ovesen Biler (Kongerslev), Autohuset Vestergaard (Rødekro), Halles Auto (Varde — har eget lager af sliddele og giver rabat til gruppen).</li>
+    <li><strong>Vejle har mistet autorisationen</strong>, og flere værksteder er trådt ud af samarbejdet. Tjek altid <span class="path">aiways.dk/pages/find-partner</span> før du kører.</li>
+    <li><strong>~80 % af sliddelene deles med andre mærker</strong> (VW- og Volvo-slægtskab). Slå bilen op på <span class="path">thansen.dk</span>, eller bed din mekaniker slå den op i FTZ — så kommer der pludselig masser af kompatible dele frem.</li>
+    <li><strong>AliExpress, Alibaba og Temu</strong> bruges flittigt og med god erfaring: bagrudevisker (~113 kr), håndtagsmotorer, kabinefilter, bremseklodser, stabilisatorstænger, viskerarme, seleforlængere. Levering typisk 10 dage til 3 uger.</li>
+    <li><strong>Ophuggere:</strong> <span class="path">nemdele.dk</span> og <span class="path">autoparts24.dk</span> begynder at have U5-dele.</li>
+    <li><strong>Karrosseridele og lygter er den svære kategori.</strong> Har du en større skade, skal du forvente lang ventetid — eller håbe på totalskade. Flere har fået limet eller repareret i stedet.</li>
+    <li>Praktisk: har du kun brug for bilen som transport, spørg om der kan laves en midlertidig løsning (seleforlænger fra Temu, lime en revnet kofanger) mens du venter.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 10 -->
+<section class="s">
+  <p class="s-page">10 / 11</p>
+
+  <article class="t" id="t-service">
+  <h2>Servicen der holder garantien i live — ring rundt</h2>
+  <p class="s-lead">Det obligatoriske service er ved <strong>3 år eller 100.000 km — hvad der kommer først</strong>. Priser rapporteret i gruppen for præcis samme service svinger over 5.000 kr:</p>
+  <table>
+    <thead><tr><th>3-års-service</th><th>Pris</th></tr></thead>
+    <tbody>
+      <tr><td>Bilforum Herning / mekaniker i Jylland</td><td>3.800–3.965 kr</td></tr>
+      <tr><td>Reenberg, Finn Allan Eriksen, Ovesen Kongerslev, Rødekro</td><td>5.400–5.500 kr</td></tr>
+      <tr><td>Dreyer Søborg</td><td>5.800 kr</td></tr>
+      <tr><td>Dreyers Gladsaxe · Esbjerg / Vejle</td><td>6.500–6.800 kr</td></tr>
+      <tr><td>Frederikssund, Elmer Amager</td><td>8.500–8.900 kr</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>Halv pris over broen: Dækgaragen i Rudkøbing anbefales. Og ATU i Tyskland nævnes ofte som markant billigere — ca. 150 € for stort A/C-eftersyn.</li>
+    <li><strong>Vigtigst:</strong> forlang at det laves <em>efter Aiways' forskrifter</em>, og få specifikationen med. Gruppen har fanget flere «3-års-service» til 3.000 kr, hvor der bare var lavet almindeligt service — uden <strong>bremsevæskeskift</strong>, <strong>batteri i T-boksen (kræves hver 36. måned)</strong>, kølevæske, gearolie og SoH-test. Så er garantien i fare.</li>
+    <li>Det <em>anbefalede</em> årlige service (20.000 km) koster ca. 973–1.000 kr og er ikke et garantikrav. Nogle springer det over; andre kører det for at få bilen tjekket og opdateret gratis.</li>
+    <li>Gearkasseolie: ét autoriseret værksted mener 50–75.000 km er mere realistisk end forskriften. Spørg.</li>
+    <li>Bed samtidig værkstedet <strong>sætte testeren på og tjekke om der mangler softwareopdateringer.</strong> Det er gratis, og versionsnummeret afslører det ikke — se side 11.</li>
+  </ul>
+  </article>
+
+  <article class="t" id="t-klonk">
+  <h2>Klonk og knirk over bump = bøsninger eller stabilisatorstænger</h2>
+  <p class="s-lead">Hører du en «kladunk» eller knirken ved bump, opbremsning og let acceleration, er du i godt selskab. Det er stort set altid det samme, og det er en <strong>kendt fejl der dækkes af garantien</strong>.</p>
+  <ul>
+    <li>De typiske syndere: <strong>bærearmsbøsninger</strong>, <strong>stabilisatorstænger («kødben»)</strong> og <strong>styrekugler</strong> — enkelte har fået skiftet en trækaksel.</li>
+    <li>Det sker tidligt: rapporter fra 1.500 km, 30.000 km, 38.000 km og opefter. Nogle har fået det skiftet to gange.</li>
+    <li><strong>Nogle gange skal det bare smøres</strong> (Kronsbjerg Odense: «skulle blot smøres»). Spørg om det først.</li>
+    <li>Priser uden garanti: 1.500–2.500 kr for bøsninger, 1.800 kr hos et lokalt værksted der får dele via FTZ.</li>
+    <li>Kør ind med det <strong>før garantien udløber</strong>. Flere har brugt netop denne fejl som anledning til at få bilen gennemgået komplet inden udløb.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 11 -->
+<section class="s">
+  <p class="s-page">11 / 11</p>
+
+  <article class="t" id="t-smaa">
+  <h2>Småting du bør kende</h2>
+  <ul>
+    <li><strong>Soltagets drænkanaler stopper til</strong> → vand indenfor og lugt af kattepis. Kanalerne er lette at komme til når soltaget er åbent, og kan renses selv (600–700 kr på værksted). Rens dem forebyggende, især hvis du parkerer under træer.</li>
+    <li><strong>Vand og kondens i baglygterne</strong> er set flere gange — skiftes på garanti. Nogle borer et lille afløbshul i bunden.</li>
+    <li><strong>Airbag-lampe der lyser?</strong> Næsten altid et løst gult stik eller en ledning under førersædet. Ofte fikset på to minutter og gratis. Ellers airbagmodul på garanti.</li>
+    <li><strong>Adaptiv fartpilot</strong> er sat op til kinesisk kørsel: holder meget lang afstand, bremser og accelererer sent, og slår fra ved lavtstående sol, kraftig regn, tåge, sne eller dug på forruden — den er kamerabaseret, så rens forruden og kameraområdet. Der findes ikke almindelig fartpilot, kun adaptiv. Bilen kan også bremse spontant for «spøgelser».</li>
+    <li><strong>Nøglen:</strong> CR2032. Brug kvalitetsbatterier (Duracell) — de billige giver problemer. Vend det rigtigt, det er den klassiske fejl. Virker nøglen ikke bagefter, læg den i <strong>kopholderen</strong> mens du starter, så genkender bilen den. Der er en nødnøgle inde i fjernbetjeningen (tryk knappen bag på og træk ud) — dog ikke på de tidligste modeller, hvor den blev leveret løst. <strong>Find den og tjek at den virker, før du får brug for den.</strong> Ny nøgle: autoriseret forhandler (~3.000 kr) eller Global Key eller en autolåsesmed.</li>
+    <li><strong>Softwareversion:</strong> 1.7.0 (typisk 1-fasede MY21), 1.8.x, 1.9.2 (3-fasede). <strong>Versionsnummeret ændrer sig ikke ved opdatering</strong> — én i gruppen har fået 6 opdateringer og står stadig på 1.9.2. Der findes ingen OTA i Europa; det skal ske på værkstedet, det er gratis, og de gør det kun hvis noget fejler. Opdateringer har for flere fikset kabinelys, dug og klima, DAB, TPMS-nulstilling og 12V-dræn.</li>
+    <li><strong>Lasteevnen er kun ca. 310 kg.</strong> Med fem personer er du over. Bilen kan vejes op hos forhandleren for ca. 1.000 kr til 2.275 kg totalvægt = ~425–430 kg last, uden ændret ejerafgift.</li>
+    <li><strong>Anhængertræk:</strong> 1.500 kg, og bilen roses meget som trækker. Kun det originale GDW-træk er typegodkendt i Danmark. Regn med 150–200 km rækkevidde med fuld vægt på krogen.</li>
+  </ul>
+  </article>
+
+  <article class="t" id="t-uret">
+  <h2>Uret: hold begge rulleknapper inde præcis kl. 08:30</h2>
+  <p class="s-lead">Fordi serveren er nede, kan bilen ikke selv stille uret, og der er ingen menu til det. Gruppens fix:</p>
+  <ul>
+    <li><strong>Hold begge sølv-rulleknapper på rattet inde i 5–10 sekunder.</strong> Systemet genstarter og sætter uret til <strong>08:30</strong> — så gør det præcis kl. 08:29–08:30, og uret passer. Datoen bliver desværre sat til «tirsdag den 1.», og den kan ikke rettes.</li>
+    <li><strong>Ved sommer- og vintertid:</strong> skift tidszone under <span class="path">System › Display › Time zone</span> (London eller Paris) for at flytte uret en time.</li>
+    <li>Nogle får uret stillet ved at koble bilen på et WiFi-hotspot fra telefonen — det virker for nogle og slet ikke for andre.</li>
+    <li>Har du CarPlay tilsluttet, tager den tiden fra telefonen.</li>
+    <li>Skal du skifte 12V-batteri: gør det kl. 08:30, så slipper du for at nulstille bagefter.</li>
+  </ul>
+  </article>
+</section>
+
+</div>
+</body>
+</html>

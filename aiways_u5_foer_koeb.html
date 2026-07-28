@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aiways U5 — Før du køber</title>
+<style>
+  :root{
+    --ink:#15181b;
+    --soft:#33383d;
+    --muted:#6a7075;
+    --rule:#c6c9cb;
+    --hair:#e0e2e3;
+    --accent:#1b4a44;
+    --warn:#8b2f26;
+    --tint:#f4f3f0;
+    --serif:"Constantia","Palatino Linotype","Book Antiqua",Palatino,"Iowan Old Style",Georgia,serif;
+    --sans:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:#e7e5e1; color:var(--ink);
+    font-family:var(--serif); font-size:10.5pt; line-height:1.55;
+    font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1,"kern" 1;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .sheet{max-width:186mm; margin:8mm auto 14mm; padding:20mm 18mm 16mm; background:#fff; border:1px solid #d5d2cd}
+  p{margin:0 0 3.5mm; orphans:3; widows:3}
+  strong{font-weight:700}
+  h1,h2{font-family:var(--sans); font-weight:600; margin:0}
+  a{color:inherit; text-decoration:none}
+
+  /* ── forside ────────────────────────────── */
+  h1{font-size:23pt; line-height:1.05; letter-spacing:.03em; text-transform:uppercase; margin:0 0 5mm}
+  .lead{font-size:11.5pt; line-height:1.5; color:var(--soft); max-width:138mm}
+  .meta{font-family:var(--sans); font-size:8pt; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:6mm 0 0; padding-top:3mm; border-top:.75pt solid var(--hair)}
+  .meta span+span::before{content:"·"; margin:0 2.2mm; color:var(--rule)}
+  .rule-heavy{border:0; border-top:1.6pt solid var(--accent); margin:7mm 0}
+
+  /* ── indholdsfortegnelse ────────────────── */
+  .label{font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 4mm}
+  .toc ol{list-style:none; margin:0; padding:0}
+  .toc li{display:flex; align-items:baseline; margin:0; padding:1.8mm 0; break-inside:avoid; font-size:10.5pt}
+  .toc li::before{content:none}
+  .toc .dots{flex:1 1 auto; min-width:8mm; margin:0 3mm 1.2mm; border-bottom:.5pt dotted var(--rule)}
+  .toc .p{font-family:var(--sans); font-size:8.5pt; font-weight:700; letter-spacing:.06em; color:var(--accent);
+          font-variant-numeric:lining-nums tabular-nums; white-space:nowrap}
+
+  /* ── sider og emner ─────────────────────── */
+  .s{break-before:page; position:relative; padding-bottom:11mm}
+  .s-page{position:absolute; bottom:0; left:0; right:0; margin:0; text-align:center;
+          font-family:var(--sans); font-size:8.5pt; font-weight:600; letter-spacing:.14em;
+          color:var(--muted); font-variant-numeric:lining-nums tabular-nums}
+  .t + .t{margin-top:6mm; padding-top:6mm; border-top:.75pt solid var(--rule)}
+  h2{font-size:15pt; line-height:1.22; letter-spacing:-.005em; margin:0 0 3.5mm}
+  .s-lead{color:var(--soft)}
+  ul{list-style:none; margin:0 0 4mm; padding:0}
+  li{position:relative; padding-left:5.5mm; margin:0 0 2.2mm; break-inside:avoid}
+  li::before{content:"–"; position:absolute; left:0; top:0; color:var(--accent); font-family:var(--sans)}
+  .tag{display:inline-block; font-family:var(--sans); font-size:7pt; font-weight:700; letter-spacing:.14em;
+       text-transform:uppercase; border:.75pt solid var(--rule); padding:1px 5px 0; margin-left:2mm;
+       vertical-align:3px; color:var(--muted); white-space:nowrap}
+  .tag.crit{color:var(--warn); border-color:var(--warn)}
+  .path{font-family:var(--sans); font-size:8.8pt; letter-spacing:.02em; color:var(--soft)}
+  .quote{margin:4mm 0 0; padding-left:5mm; border-left:1.2pt solid var(--accent); font-style:italic; color:var(--soft)}
+
+  /* ── tabeller ───────────────────────────── */
+  table{width:100%; border-collapse:collapse; margin:0 0 4.5mm; font-size:9.8pt}
+  th,td{text-align:left; padding:1.9mm 0; border-bottom:.5pt solid var(--hair); vertical-align:top}
+  thead th{font-family:var(--sans); font-size:7.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); border-bottom:.75pt solid var(--rule)}
+  td:last-child,th:last-child{text-align:right; white-space:nowrap; font-variant-numeric:lining-nums tabular-nums}
+
+  /* ── tjekliste ──────────────────────────── */
+  .cols{columns:2; column-gap:9mm; margin-top:1.5mm}
+  .group{font-family:var(--sans); font-size:7.5pt; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+         color:var(--muted); margin:3.6mm 0 1mm; padding-bottom:1mm; border-bottom:.75pt solid var(--rule);
+         break-after:avoid; break-inside:avoid}
+  .cols .group:first-child{margin-top:0}
+  .check{margin:0; font-size:9.3pt; line-height:1.42}
+  .check li{padding:1.5mm 0 1.5mm 6.5mm; margin:0; border-bottom:.5pt solid var(--hair)}
+  .check li::before{content:""; left:0; top:2mm; width:3.2mm; height:3.2mm; border:.9pt solid var(--accent); background:#fff}
+
+  footer{margin-top:8mm; padding-top:3.5mm; border-top:1.6pt solid var(--accent); font-size:9pt; color:var(--muted)}
+  footer p{margin:0}
+
+  /* ── skærm ──────────────────────────────── */
+  .hint{max-width:186mm; margin:8mm auto -6mm; padding:4mm 6mm; background:#fff; border:1px solid #d5d2cd;
+        font-family:var(--sans); font-size:9pt; line-height:1.5; color:var(--muted)}
+  .hint b{color:var(--ink)}
+  @media screen{ .s{margin-top:16mm} }
+
+  @page{size:A4 portrait; margin:16mm 17mm 14mm}
+  @media print{
+    body{background:#fff; font-size:10pt}
+    .sheet{max-width:none; margin:0; padding:0; border:0}
+    .no-print{display:none !important}
+    .quote,table{break-inside:avoid}
+    h1,h2,.group{break-after:avoid}
+    .s{min-height:264mm}
+  }
+</style>
+</head>
+<body>
+
+<aside class="hint no-print">
+  <b>Print:</b> A4, dobbeltsidet (vend på lange side). Slå browserens sidehoved og sidefod fra, og sæt marginer til «standard». Sidetallet står nederst på hver side, så indholdsfortegnelsen passer uanset printer. Vil du have et A5-hæfte: vælg <b>2 sider pr. ark</b>, liggende, og fold arkene på midten.
+</aside>
+
+<div class="sheet">
+
+<header>
+  <h1>Før du køber</h1>
+  <p class="lead">Ni ting der afgør om du gør en god handel eller en dyr — plus en tjekliste til prøveturen. Alt herunder er destilleret fra reelle spørgsmål, svar og erfaringer i Facebook-gruppen Aiways Danmark. Ikke fra brochuren.</p>
+  <p class="meta"><span>Kilde: 8.652 linjer tråde</span><span>~700 emner</span><span>nov. 2024 – juli 2026</span></p>
+</header>
+
+<hr class="rule-heavy">
+
+<nav class="toc">
+  <p class="label">Indhold</p>
+  <ol>
+    <li><span>1-faset eller 3-faset? Tjek det fysisk</span><span class="dots"></span><a class="p" href="#t-faser">Side 1</a></li>
+    <li><span>«Modelår 2025» findes ikke rigtigt</span><span class="dots"></span><a class="p" href="#t-modelaar">Side 1</a></li>
+    <li><span>Garanti og parallelimport — få det på skrift</span><span class="dots"></span><a class="p" href="#t-garanti">Side 2</a></li>
+    <li><span>Premium, Limited eller Plus — og hvad bilen må bære</span><span class="dots"></span><a class="p" href="#t-varianter">Side 3</a></li>
+    <li><span>Rækkevidden du reelt kan regne med</span><span class="dots"></span><a class="p" href="#t-raekke">Side 3</a></li>
+    <li><span>App'en findes ikke længere</span><span class="dots"></span><a class="p" href="#t-app">Side 4</a></li>
+    <li><span>Firmaet, værdien og hvad du bør betale</span><span class="dots"></span><a class="p" href="#t-firma">Side 4</a></li>
+    <li><span>De kendte fejl — kør efter dem på prøveturen</span><span class="dots"></span><a class="p" href="#t-fejl">Side 5</a></li>
+    <li><span>Hvad bilen koster at eje</span><span class="dots"></span><a class="p" href="#t-eje">Side 6</a></li>
+    <li><span>Tjekliste til prøveturen</span><span class="dots"></span><a class="p" href="#t-liste">Side 7</a></li>
+  </ol>
+</nav>
+
+<!-- SIDE 1 -->
+<section class="s">
+  <p class="s-page">1 / 7</p>
+
+  <article class="t" id="t-faser">
+  <h2>1-faset eller 3-faset? Tjek det <em>fysisk</em><span class="tag crit">Afgørende</span></h2>
+  <p class="s-lead">Den enkeltfejl der har kostet flest i gruppen mest ærgrelse. Skiftet skete omkring slutningen af 2022, og <strong>rigtig mange salgsannoncer er forkerte</strong> — også forhandlerannoncer, hvor 3-fasede specifikationer er klippet ind i en 1-faset bil.</p>
+  <ul>
+    <li><strong>Sådan ser du det:</strong> kig ned i bilens ladestik. Ben i alle 7 huller = 3-faset. To huller tomme, altså kun 5 ben = 1-faset. Tag et foto.</li>
+    <li><strong>Eller</strong> skriv til Aiways Danmark med stelnummeret og få det bekræftet skriftligt. Det gjorde en køber i gruppen, netop fordi de 3 faser var afgørende for ham.</li>
+    <li><strong>På lynlader (DC) er der ingen forskel</strong> — begge varianter kan op til ca. 90 kW. Det bliver blandet sammen i næsten hver eneste tråd om emnet.</li>
+    <li>Kan man leve med 1-faset? Ja — massevis kører 100–150 km dagligt og sætter blot til om aftenen. Men skal du bruge bilen to gange samme dag, mærker du det med det samme.</li>
+    <li>En fasefordeler i ladeboksen kan give en 1-faset op til ca. 7 kW, hvis din elinstallation kan bære det.</li>
+  </ul>
+  <table>
+    <thead><tr><th>Hjemmeladning 0–100 %</th><th>Tid</th></tr></thead>
+    <tbody>
+      <tr><td>1-faset · 3,7 kW</td><td>17–18 timer</td></tr>
+      <tr><td>3-faset · 11 kW</td><td>5–7 timer</td></tr>
+      <tr><td>Lynlader (DC) · begge varianter</td><td>op til ca. 90 kW</td></tr>
+    </tbody>
+  </table>
+  </article>
+
+  <article class="t" id="t-modelaar">
+  <h2>«Modelår 2025» findes ikke rigtigt</h2>
+  <p class="s-lead">Aiways stoppede produktionen i starten af 2023. Alligevel sælges biler i dag som 2024- og 2025-modeller, fordi de har stået på lager og først er indregistreret nu. Flere i gruppen har opdaget at deres «helt nye» bil er produceret i november 2022 — og at 12V-batteriet dermed allerede var tre år gammelt fra dag ét.</p>
+  <ul>
+    <li><strong>Tjek 10. tegn i stelnummeret</strong> (VIN). Et «N» = 2022.</li>
+    <li><strong>Tjek registreringsattesten</strong> — den skelner mellem modelår og første indregistrering.</li>
+    <li><strong>Tjek datostemplerne i ruderne.</strong> Flere har fanget det netop dér.</li>
+    <li>Tjek på <span class="path">tjekbil.dk</span> om bilen er parallelimporteret.</li>
+    <li>Det er ikke ulovligt at sælge den som «modelår 2025», men du skal kende produktionsåret — det påvirker batteri, gummidele, dækalder og gensalgsværdi. Nogle har fået handler gjort om via FDM på præcis dette punkt.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 2 -->
+<section class="s">
+  <p class="s-page">2 / 7</p>
+
+  <article class="t" id="t-garanti">
+  <h2>Garanti og parallelimport — få det på skrift<span class="tag crit">Afgørende</span></h2>
+  <p class="s-lead">Garantien løber fra <strong>Aiways' leveringsdato</strong>, ikke fra første indregistrering. Det overrasker mange, og på en lagerbil kan der være år at hente — eller år der allerede er brugt.</p>
+  <table>
+    <thead><tr><th>Fabriksgaranti</th><th>Dækning</th></tr></thead>
+    <tbody>
+      <tr><td>Bilen</td><td>5 år / 150.000 km</td></tr>
+      <tr><td>Batteri og drivline</td><td>8 år / 150.000 km</td></tr>
+      <tr><td>Lak</td><td>4 år</td></tr>
+      <tr><td>Gennemrustning</td><td>10 år</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><strong>Rigtig mange U5'ere i Danmark er parallelimporteret</strong> (Frankrig, Tyskland, Spanien, Holland, Sverige) og typisk 50.000–100.000 kr billigere. Nogle har fuld garanti uden problemer; andre har kæmpet i 7+ måneder uden svar.</li>
+    <li><strong>Sådan sikrer du dig:</strong> skriv til Aiways Danmark med stelnummer eller nummerplade <em>før</em> handlen og få bekræftet at bilen er registreret i deres system. Bed forhandleren sørge for registreringen — og få det <strong>skrevet på slutsedlen</strong> at garantien dækker. Uden det står du uden noget.</li>
+    <li><strong>Servicebog og garantihæfte skal følge med.</strong> Er de væk, kan Aiways afvise. De kan eventuelt rekonstrueres via forhandleren eller <span class="path">digital-servicebook.com</span>.</li>
+    <li><strong>Fragus-garanti</strong> bruges af mange og købes typisk gennem forhandleren: ca. 10.000 kr for 3–5 år, dækning op til ~75.000 kr. Flere har fået både sele, softwareopdatering (6.500 kr) og reparationer betalt gennem den. Den dækker også hvis Aiways går konkurs — hvad fabriksgarantien i praksis ikke gør.</li>
+    <li>Forhandleren skal under alle omstændigheder give <strong>2 års reklamationsret</strong> efter købeloven. Bevisbyrden er hos ham de første 12 måneder.</li>
+    <li><strong>Overvej FDM-medlemskab.</strong> Det nævnes gang på gang som det der løser sagerne — inklusive gratis 12V-batteriskift hos QuickPoint for et medlem, og advokathjælp i tvister.</li>
+    <li>Vær opmærksom på «force majeure»-klausulen: en garanti er ikke meget værd, hvis reservedelen ikke længere produceres.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 3 -->
+<section class="s">
+  <p class="s-page">3 / 7</p>
+
+  <article class="t" id="t-varianter">
+  <h2>Premium, Limited eller Plus — og hvad bilen må bære</h2>
+  <ul>
+    <li><strong>Premium</strong> har soltag, sædevarme og læder. <strong>Limited</strong> har kunstlæder og <strong>ingen sædevarme</strong> — men knapperne til sædevarme sidder der alligevel og reagerer, så mange tror deres sædevarme er defekt. (Bekræftet af værkfører fra Aiways Herning i gruppen.) Er der sædevarme, er den i øvrigt beskeden — den «luner».</li>
+    <li><strong>Kun Premium kan få anhængertræk.</strong> Bilen må trække <strong>1.500 kg</strong> og roses meget som trækker. Eftermontering koster 7.500–17.500 kr afhængigt af værksted (10.000–15.000 er typisk; 7.500 kan forhandles i forbindelse med bilkøbet). Kun det originale GDW-træk er typegodkendt i Danmark, og det er ofte i restordre — så find en bil hvor trækket <em>allerede sidder</em>, hvis du skal trække.</li>
+    <li><strong>Lasteevnen er kun ca. 310 kg.</strong> Med fem personer i bilen er du over. Bilen kan <strong>vejes op</strong> hos forhandleren for ca. 1.000 kr til 2.275 kg totalvægt = ~425–430 kg last, uden ændret ejerafgift. Kør uden opvejning, og du kører reelt overlæsset.</li>
+    <li>Bagagerummet kan gøres helt fladt, og pladsen er en af bilens virkelige styrker. Til gengæld knækker <strong>seleholderne til bagsædet</strong> let hvis de kommer i klemme — en ny koster ~2.200 kr med 7–10 måneders ventetid. Tjek dem.</li>
+  </ul>
+  </article>
+
+  <article class="t" id="t-raekke">
+  <h2>Rækkevidden du reelt kan regne med</h2>
+  <p class="s-lead">De 400 km er WLTP. Sådan ser tallene ud, når man lægger de mange rapporter i gruppen sammen. Batteriet er 63 kWh.</p>
+  <table>
+    <thead><tr><th>Forhold</th><th>Rækkevidde</th></tr></thead>
+    <tbody>
+      <tr><td>Sommer, landevej og blandet</td><td>300–370 km</td></tr>
+      <tr><td>Sommer, motorvej 110–120</td><td>240–280 km</td></tr>
+      <tr><td>Vinter, blandet</td><td>200–280 km</td></tr>
+      <tr><td>Vinter, motorvej (130 og frost: ned mod 150)</td><td>150–200 km</td></tr>
+      <tr><td>Med 1.500 kg på krogen</td><td>150–200 km</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>Forbrug: ca. <strong>17–20 kWh/100 km om sommeren</strong> og <strong>22–30 (op til 35) om vinteren</strong> ved mange korte ture. Tagboks koster 20–30 % ekstra.</li>
+    <li><strong>Bilen estimerer ikke intelligent.</strong> Den viser altid ca. 400 km ved 100 %, uanset vejr og kørestil. Lær at regne selv.</li>
+    <li><strong>Ingen varmepumpe</strong> — den har aldrig eksisteret på modellen. Bliver bilen solgt med «varmepumpe», er annoncen forkert. Det er hovedårsagen til vinterforbruget.</li>
+    <li><strong>Bilen kan ikke prækonditionere batteriet</strong> før lynladning, og ladekurven topper ved 90–93 kW. Koldt batteri lader 25–50 kW. Regn med 20–80 % på 35 min i godt vejr og 45–60+ min om vinteren.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 4 -->
+<section class="s">
+  <p class="s-page">4 / 7</p>
+
+  <article class="t" id="t-app">
+  <h2>App'en findes ikke længere — og kommer nok ikke igen</h2>
+  <p class="s-lead">Aiways-app'en har været nede siden foråret 2025. Officiel forklaring: flytning af IT-infrastrukturen fra Kina til München. Deadline er udskudt fra juli 2025 → 2. halvår → «inden årets udgang» → intet. App'en er nu også fjernet fra App Store. Aiways kalder den selv «en gratis service», og hverken forhandlere eller Aiways Danmark har indflydelse — ansvaret ligger hos Aiways Europe (<span class="path">contact@ai-ways.eu</span>).</p>
+  <ul>
+    <li><strong>Det du ikke får:</strong> forvarmning og køling af kabinen, batteriprocent på afstand, ladestatus, fjernlås, vinduer, gæstebruger — og bilens ur- og datosynkronisering. Der står permanent «no service» i skærmens hjørne, og uret skal stilles med et trick.</li>
+    <li><strong>Der er arbejdsomgåelser</strong> for både forvarmning og batteriprocent (OBD2-dongle plus A Better Route Planner eller Car Scanner Pro). De virker, men de er manuelle. Se håndbogen til handskerummet.</li>
+    <li><strong>Kan man ophæve købet på det?</strong> Realistisk nej — flere har forsøgt. Én kører retssag via FDM's advokat, men det er på baggrund af gentagne fejl, ikke app'en alene.</li>
+    <li><strong>Er app'en afgørende for dig, skal du ikke købe bilen.</strong> Så enkelt er det.</li>
+  </ul>
+  </article>
+
+  <article class="t" id="t-firma">
+  <h2>Firmaet, værdien og hvad du bør betale</h2>
+  <ul>
+    <li><strong>Ingen produktion siden 2023</strong>, app'en er død, og fusionen med Hudson Acquisition (EUROEV) er endnu ikke gennemført. Det er den usikkerhed du køber ind i.</li>
+    <li><strong>Bilerne har tabt enormt.</strong> Biler købt til 345.000 kr for to-tre år siden handles nu til 100.000–150.000 kr. Det er dårligt nyt hvis du sælger — og hele argumentet hvis du køber.</li>
+    <li><strong>Gruppen er delt.</strong> Nogle anbefaler at <strong>lease</strong> eller kun købe billigt. Andre har kørt 120.000–210.000 km og elsker bilen stadig.</li>
+    <li><strong>Det du får for pengene:</strong> usædvanligt meget plads, udstyr og komfort, og en fremragende trækker. Køber du den til dagens pris og med øjnene åbne, er der ikke mange biler der giver mere bil pr. krone.</li>
+    <li><strong>Det du skal kunne leve med:</strong> ingen app, intet navigationsanlæg, langsom infotainment, langsom varme om vinteren, og at en større skade kan sætte bilen på værksted i månedsvis.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 5 -->
+<section class="s">
+  <p class="s-page">5 / 7</p>
+
+  <article class="t" id="t-fejl">
+  <h2>De kendte fejl — kør efter dem på prøveturen</h2>
+  <p class="s-lead">Listen her er ikke skræmmekampagne: det er de fejl der går igen, og de fleste dækkes af garantien. Men de skal fanges <em>før</em> du skriver under — dels som forhandlingsargument, dels så de kommer på værkstedet mens garantien lever.</p>
+  <ul>
+    <li><strong>12V-batteriet er bilens akilleshæl.</strong> Det klart mest omtalte emne i hele gruppen. Det originale batteri er af dårlig kvalitet og kan klappe sammen uden varsel — og så er bilen stendød. Budgettér <strong>800 kr til nyt batteri og 600 kr til en jumpstarter fra dag ét</strong>, uanset hvad sælgeren siger om målingerne.</li>
+    <li><strong>E-locken i ladeporten.</strong> Låsemotoren er svag, og når ladepistolen ikke låses ordentligt, skruer bilen ladningen ned til 5–10 kW. Test det: sæt til lynladning, se effekten på displayet, og prøv at trække stikket ud. Kan du det, er E-locken defekt.</li>
+    <li><strong>Dørhåndtag der ikke går ind.</strong> Den lille elmotor i det fremkørende håndtag brænder af. Anerkendt garantisag. Lås og lås op, og se alle fire håndtag.</li>
+    <li><strong>Klonk og knirk over bump</strong> = bærearmsbøsninger, stabilisatorstænger eller styrekugler. Kendt fejl, dækket af garantien, og den kommer tidligt — der er rapporter fra 1.500 km. Kør over et bump og brems.</li>
+    <li><strong>Varmen og klimaanlægget.</strong> Bliver den varm i NORMAL? Køler A/C? Lugter det mugget? Flere biler har manglet 70–450 gram kølemiddel — nogle allerede fra fabrikken — og det går ud over varme, affugtning, rækkevidde og ladehastighed.</li>
+    <li><strong>Soltagets drænkanaler</strong> stopper til → vand indenfor og lugt af kattepis. Snus efter det, især på biler der har stået under træer.</li>
+    <li><strong>Vand og kondens i baglygterne</strong> er set flere gange. Skiftes på garanti.</li>
+    <li><strong>Airbag-lampe der lyser</strong> er næsten altid et løst gult stik under førersædet. Ofte fikset på to minutter og gratis — men få det gjort.</li>
+    <li><strong>Bremser der hænger</strong> koster rækkevidde. Ét medlem målte ~35 % længere rækkevidde efter justering af bremsekalibre. Bilen er kendt for at have brug for det, især efter lang stilstand — tjek også skiverne for rust.</li>
+    <li><strong>De originale helårsdæk</strong> får hårde ord i gruppen: «burde være ulovlige». Regn med at skulle skifte dem, og tjek DOT-alderen.</li>
+  </ul>
+  <p class="quote">Alle fejlene ovenfor er beskrevet i detaljer i håndbogen til handskerummet — med de fix ejerne selv bruger.</p>
+  </article>
+</section>
+
+<!-- SIDE 6 -->
+<section class="s">
+  <p class="s-page">6 / 7</p>
+
+  <article class="t" id="t-eje">
+  <h2>Hvad bilen koster at eje</h2>
+  <p class="s-lead">Det obligatoriske service er ved <strong>3 år eller 100.000 km — hvad der kommer først</strong>. Det er dét, der holder garantien i live. Priser rapporteret i gruppen for præcis samme service:</p>
+  <table>
+    <thead><tr><th>3-års-service</th><th>Pris</th></tr></thead>
+    <tbody>
+      <tr><td>Bilforum Herning / mekaniker i Jylland</td><td>3.800–3.965 kr</td></tr>
+      <tr><td>Reenberg, Finn Allan Eriksen, Ovesen Kongerslev, Rødekro</td><td>5.400–5.500 kr</td></tr>
+      <tr><td>Dreyer Søborg</td><td>5.800 kr</td></tr>
+      <tr><td>Dreyers Gladsaxe · Esbjerg / Vejle</td><td>6.500–6.800 kr</td></tr>
+      <tr><td>Frederikssund, Elmer Amager</td><td>8.500–8.900 kr</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><strong>Vigtigst:</strong> forlang at det laves <em>efter Aiways' forskrifter</em>, og få specifikationen med. Gruppen har fanget flere «3-års-service» til 3.000 kr, hvor der bare var lavet almindeligt service — uden bremsevæskeskift, batteri i T-boksen (kræves hver 36. måned), kølevæske, gearolie og SoH-test. Så er garantien i fare.</li>
+    <li>Det <em>anbefalede</em> årlige service (20.000 km) koster ca. 973–1.000 kr og er ikke et garantikrav. Halv pris over broen: Dækgaragen i Rudkøbing anbefales, og ATU i Tyskland nævnes ofte som markant billigere.</li>
+    <li><strong>Reservedele er et lotteri — men lotteriet afhænger af værkstedet.</strong> Nogle venter 6–11 måneder på en kofanger eller en forrude. Andre får håndtag, støddæmpere, sidespejle og bremseskiver hjem på 1–3 uger. Ring rundt før du accepterer et «det kan ikke skaffes».</li>
+    <li><strong>~80 % af sliddelene deles med andre mærker</strong> (VW- og Volvo-slægtskab), og AliExpress, Temu og ophuggere bruges flittigt og med god erfaring. Karrosseridele og lygter er den svære kategori — har du en større skade, skal du forvente lang ventetid.</li>
+    <li><strong>Dæk:</strong> 3.000–7.800 kr for fire, plus 200–500 kr pr. dæk i montering. Aiways-forhandlernes vinterhjul koster typisk 10.000–16.000 kr — de fleste køber online og får dem monteret lokalt.</li>
+    <li><strong>12V-batteri hvert 2.–3. år</strong> à 600–800 kr. Regn med det som en fast post.</li>
+  </ul>
+  </article>
+</section>
+
+<!-- SIDE 7 -->
+<section class="s">
+  <p class="s-page">7 / 7</p>
+
+  <article class="t" id="t-liste">
+  <h2>Tjekliste til prøveturen</h2>
+  <p class="s-lead">Læs den højt for sælgeren. Alle punkter kommer fra fejl som folk i gruppen først opdagede <em>efter</em> de havde skrevet under.</p>
+
+  <div class="cols">
+  <p class="group">Papirer og garanti</p>
+  <ul class="check">
+    <li>Stelnummer sendt til Aiways Danmark — er bilen registreret, og hvornår startede garantien?</li>
+    <li>Er den parallelimporteret? Tjek på tjekbil.dk. Står garantien på slutsedlen?</li>
+    <li>Servicebog og garantihæfte i hånden. Er 3-års-servicen lavet efter Aiways' forskrifter — med specifikation?</li>
+    <li>Produktionsår: 10. tegn i VIN og datostempel i ruderne — matcher det annoncen?</li>
+    <li>Lasteevne på registreringsattesten — skal bilen vejes op?</li>
+  </ul>
+
+  <p class="group">Ladning og el</p>
+  <ul class="check">
+    <li>Ladestikket: er der ben i alle 7 huller (3-faset)? Tag et foto.</li>
+    <li>Sæt til lynladning og se effekten på displayet — og prøv at trække stikket ud (E-lock).</li>
+    <li>Prøv at få stikket ud med nøgletricket: lås + bagklap inde i 3 sek., derefter lås op.</li>
+    <li>Softwareversion og manglende opdateringer — bed dem sætte testeren på.</li>
+  </ul>
+
+  <p class="group">Mekanik og karrosseri</p>
+  <ul class="check">
+    <li>Kør over bump og brems: hører du klonk eller knirk? (Bøsninger — få det med på garanti nu.)</li>
+    <li>Alle fire dørhåndtag: går de ind når du låser?</li>
+    <li>Bremseskiver: rust efter lang stilstand? Hænger bremserne? Dækkenes DOT-alder?</li>
+    <li>Soltag: åbn det og se drænkanalerne. Lugter kabinen fugtigt?</li>
+    <li>Baglygter: kondens eller vand indenfor?</li>
+  </ul>
+
+  <p class="group">Kabine og elektronik</p>
+  <ul class="check">
+    <li>Klimaanlæg: bliver den varm i NORMAL? Køler A/C? Lugter det mugget?</li>
+    <li>Er der sædevarme (Premium) eller kun knapper (Limited)? Tænd den og mærk efter.</li>
+    <li>Fodsensor på bagklappen, trådløs telefonopladning, DAB, bakkamera og 360° — virker det?</li>
+    <li>Lyser airbag-lampen? (Løst stik under førersædet — få det fikset inden overdragelse.)</li>
+    <li>Sæt begge bagsæder helt ned og tjek midtersele-låsen. Den knækker let.</li>
+    <li>Nødnøglen i fjernbetjeningen: findes den, og kan du åbne førerdøren med den?</li>
+  </ul>
+
+  <p class="group">Budget fra dag ét</p>
+  <ul class="check">
+    <li>800 kr til nyt 12V-batteri og 600 kr til en jumpstarter.</li>
+    <li>3.000–7.800 kr til ordentlige dæk, hvis de originale sidder på.</li>
+    <li>3.800–8.900 kr til 3-års-servicen — ring rundt, forskellen er over 5.000 kr.</li>
+  </ul>
+  </div>
+
+  <footer>
+    <p>Følges af hæfte nr. 2: <strong>Håndbog til handskerummet</strong>.</p>
+  </footer>
+  </article>
+</section>
+
+</div>
+</body>
+</html>
